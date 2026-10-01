@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Audio-Visual Reader</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="player-app">
+        <header class="app-header">
+            <h1 id="app-title">Interactive Audio-Visual Reader</h1>
+            <div class="section-nav" id="section-nav"></div>
+        </header>
+
+        <main class="split-view">
+            <!-- Left: Visual Stage -->
+            <section class="visual-stage">
+                <div id="visual-mount" class="visual-mount"></div>
+                <div id="visual-placeholder" class="placeholder-text">Loading...</div>
+            </section>
+
+            <!-- Right: Transcript -->
+            <section class="transcript-container">
+                <div class="transcript-content" id="transcript-content"></div>
+            </section>
+        </main>
+
+        <!-- Bottom: Player Controls -->
+        <footer class="player-controls">
+            <button id="play-pause-btn" class="control-btn" aria-label="Play">
+                <svg id="icon-play" viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+                <svg id="icon-pause" viewBox="0 0 24 24" width="24" height="24" style="display: none;"><path fill="currentColor" d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+            </button>
+
+            <div class="time-display" id="time-current">0:00</div>
+
+            <input type="range" id="progress-bar" class="scrubber" min="0" max="100" value="0" step="0.1">
+
+            <div class="time-display" id="time-total">0:00</div>
+
+            <audio id="master-audio" preload="auto"></audio>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

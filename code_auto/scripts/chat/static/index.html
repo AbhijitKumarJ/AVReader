@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AV Reader — Chat &amp; Wizard</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <div class="brand">
+    <span class="logo">▶</span>
+    <div>
+      <h1>Audio-Visual Reader</h1>
+      <p id="models">loading…</p>
+    </div>
+  </div>
+  <div class="header-actions">
+    <a id="reader-link" href="/reader/" target="_blank" class="ghost" hidden>open reader ↗</a>
+    <span id="job-badge" class="badge" hidden>working…</span>
+  </div>
+</header>
+
+<main>
+  <!-- ============ wizard ============ -->
+  <section id="wizard-panel">
+    <div class="panel-head">
+      <h2>Pipeline</h2>
+      <button id="reset-wizard" class="ghost small" title="Forget the answers (files stay)">reset answers</button>
+    </div>
+
+    <div id="phase" class="phase">
+      <div id="question" class="question">loading…</div>
+      <div id="wizard-buttons" class="btnrow"></div>
+      <div id="blog-box" hidden>
+        <textarea id="blog-text" rows="7" placeholder="Paste your blog post here…"></textarea>
+        <div class="btnrow">
+          <button id="save-blog">Save as input/blog.txt</button>
+          <button id="create-draft" class="primary">Create draft</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="gap-block" hidden>
+      <h3>Assets <span id="gap-totals" class="muted"></span></h3>
+      <table id="gap-table"></table>
+      <div class="btnrow" id="gap-actions"></div>
+    </div>
+
+    <div class="btnrow" id="assemble-actions" hidden>
+      <button id="assemble-btn" class="primary">Assemble reader</button>
+    </div>
+
+    <div class="btnrow" id="done-actions" hidden>
+      <a class="btn primary" href="/reader/" target="_blank">Open reader ↗</a>
+      <button id="archive-btn">Finish → archive</button>
+    </div>
+
+    <h3>Log</h3>
+    <pre id="run-log" class="log"></pre>
+  </section>
+
+  <!-- ============ chat ============ -->
+  <section id="chat-panel">
+    <div class="panel-head">
+      <h2>Chat</h2>
+      <button id="clear-chat" class="ghost small">clear</button>
+    </div>
+    <div id="messages">
+      <div class="msg assistant"><div class="body">
+        Ask me anything about the pipeline — paste a blog, a draft.json,
+        or JS code blocks. The wizard on the left asks the four setup
+        questions one at a time; I do the rest.
+      </div></div>
+    </div>
+    <form id="composer">
+      <textarea id="chat-input" rows="3" placeholder="Message… (Enter sends, Shift+Enter newline)"></textarea>
+      <div class="composer-row">
+        <span id="chat-hint" class="muted"></span>
+        <button type="submit" id="send-btn">Send</button>
+      </div>
+    </form>
+  </section>
+</main>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

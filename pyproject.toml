@@ -1,0 +1,55 @@
+[project]
+name = "avreader"
+version = "0.1.0"
+description = "Automated Interactive Audio-Visual Reader Pipeline For Blogs"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+authors = [
+    { name = "abhijit" },
+]
+keywords = [
+    "blog",
+    "reader",
+    "text-to-speech",
+    "tts",
+    "audio",
+    "interactive",
+    "pipeline",
+    "gemini",
+    "openrouter",
+    "llm",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Multimedia :: Sound/Audio :: Sound Synthesis",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "aiohttp>=3.14.3",
+]
+
+[project.urls]
+Homepage = "https://github.com/AbhijitKumarJ/AVReader"
+Repository = "https://github.com/AbhijitKumarJ/AVReader"
+Issues = "https://github.com/AbhijitKumarJ/AVReader/issues"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.14.0",
+]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+extend-exclude = ["code_auto/draft", "code_auto/final", "code_auto/out"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "B"]
