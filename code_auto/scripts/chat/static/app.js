@@ -102,6 +102,13 @@ function render() {
       answer('draft', false, 'No — start from a blog');
       break;
 
+    case 'draft_found':
+      $('gap-block').hidden = false;
+      renderGap();
+      answer('draft', true, 'Yes — use this draft');
+      answer('draft', false, 'No — start from a blog');
+      break;
+
     case 'draft_fix':
       if (w.blog.exists) {
         const b = document.createElement('button');

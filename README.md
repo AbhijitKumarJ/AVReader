@@ -76,21 +76,68 @@ is the single source of truth for "did I already create X?".
 > `archive_output.py` is the only thing that writes `out/<n>/`, and it only
 > clears `input/`, `draft/` and `final/` after a successful archive.
 
-## Two modes
+## The end-to-end flow
 
-**Mode 1 — external chat (AI Studio / any web LLM).**
-Copy `code_auto/scripts/sys_prompt.md` as the system prompt. The chat asks the
-four questions (draft? images? audio? JS?) and produces `draft.json` (+ optional
-JS code blocks). Dump the outputs into `code_auto/draft/`, then run
-`uv run bash code_auto/scripts/run_auto.sh` (or the chat app) — it detects what
-exists and only fills the gaps.
+Two stages: **generate the draft and assets in AI Studio, then finish
+locally.** Nothing is thrown away between them — the folders are the handoff.
 
-**Mode 2 — local chat app.** `code_auto/scripts/chat_app.py` asks the same
-questions, cross-checks `draft.json` against the three asset folders, shows a
-present/missing table, and — after you confirm — generates whatever is missing
-with the configured models. It can start the whole flow from a blog if you have
-no `draft.json` yet, and at the end asks whether you want to keep verifying in
-chat or finish and archive.
+### Stage 1 — generate draft + assets in AI Studio
+
+1. Paste [`System_Prompts/sys_prompt_aistudio.md`](System_Prompts/sys_prompt_aistudio.md)
+   into AI Studio's **System instructions** field.
+2. It runs a 5-step process: proofread → section the article → emit
+   `draft.json` in the `draft-v1` shape → generate images (Imagen / Nano
+   Banana), the `mount`/`render`/`unmount` JavaScript and the narration audio
+   → point you at the local assembler.
+3. Download whatever it produced and save it into the repository:
+
+   | what | where |
+   |---|---|
+   | corrected blog | `code_auto/input/blog.txt` |
+   | draft | `code_auto/draft/draft.json` |
+   | section images | `code_auto/draft/assets/image/<visual.file>` |
+   | section JavaScript | `code_auto/draft/assets/js/<scriptId>.js` |
+   | section narration | `code_auto/draft/assets/audio/NN_<section-id>.wav` |
+
+   Every name comes **verbatim from `draft.json`** — for a web download the
+   only thing you normally have to do is rename `image.png` → the name the
+   draft asks for.
+
+### Stage 2 — finish in the local web chat
+
+```bash
+uv run python code_auto/scripts/chat_app.py     # http://127.0.0.1:8787
+```
+
+The wizard on the left is a state machine driven by what is actually on disk:
+
+| Situation | What the chat does |
+|---|---|
+| `draft/draft.json` exists and is valid | **detects it on load and verifies it** against the `draft-v1` contract, shows the per-section present/missing table, and offers *Yes — use this draft* / *No — start from a blog* |
+| `draft/draft.json` exists but is invalid | lists the validation errors and asks you to paste a corrected one in the chat, or hand over the blog to rebuild it |
+| no `draft/draft.json`, you answer *Yes* | asks you to paste it into the chat — it is parsed, validated and written to `draft/draft.json` |
+| no `draft/draft.json`, you answer *No* | asks for the blog: type it in the box (saved as `input/blog.txt`) or drop the file into `code_auto/input/` yourself, then *Create draft* |
+| draft settled | asks **one question at a time** whether you already have the images, the audio and the JavaScript — each answer cross-checked against `draft/assets/` and shown as `on disk: N/M` |
+| anything missing | shows the gap table and offers to generate only what is missing |
+| everything present | assembles, serves the reader at `/reader/`, then offers *Finish → archive* → `out/<n>` |
+
+Answers live in `draft/chat_state.json`, so the wizard resumes where you left
+off. The same four questions are asked by the terminal wizard
+(`uv run bash code_auto/scripts/run_auto.sh`) if you prefer the CLI.
+
+## System prompts
+
+Two prompts, identical `draft-v1` contracts — pick the one that matches the
+stage you are in:
+
+| File | Use when |
+|---|---|
+| [`System_Prompts/sys_prompt_aistudio.md`](System_Prompts/sys_prompt_aistudio.md) | **Stage 1** — generating `draft.json` + assets from a blog post inside AI Studio |
+| [`code_auto/scripts/sys_prompt.md`](code_auto/scripts/sys_prompt.md) | cold-start / generic use — this is also the prompt the local chat app loads |
+
+Assets you produced in another web tool (ChatGPT images, a browser TTS) fit
+the same handoff: rename them onto the paths above, save them in
+`code_auto/draft/assets/`, and the chat will find them.
 
 ## Commands (CLI)
 
@@ -147,6 +194,8 @@ tooling — only `.env.sample` is changed when new settings appear.
 ├── uv.lock                  locked dependency versions — commit this
 ├── .python-version          interpreter pinned by uv
 ├── main.py                  minimal entry stub
+├── System_Prompts/
+│   └── sys_prompt_aistudio.md   Stage 1: generate draft.json + assets in AI Studio
 ├── code_auto/
 │   ├── scripts/             pipeline CLIs, llm client, chat app, wizard
 │   │   ├── chat/static/     chat UI (vanilla JS + CSS)
@@ -175,6 +224,40 @@ uv run ruff check              # lint
 uv run ruff format .           # format
 uv run ruff check --fix        # apply safe autofixes
 ```
+
+## Pending tasks
+
+Known gaps — none of them block the flow above, but they are not implemented
+yet:
+
+- **No file upload in the chat UI.** `input/blog.txt` and `draft/draft.json`
+  can only be pasted as text (`POST /api/blog`, `POST /api/draft-ingest` both
+  take `{text}`) or saved with a file manager — there is no drag-and-drop and
+  no file picker.
+- **Images and audio cannot be added through the UI.** They must be copied
+  into `code_auto/draft/assets/{image,audio}/` by hand. Only JavaScript has an
+  in-chat ingest (`POST /api/ingest` → `pipeline.ingest_js`), and that accepts
+  pasted text, not a file.
+- **JS ingest needs a matchable prefix.** `ingest_js` looks for the section
+  `id`, the `scriptId` or `script.file` in the ~400 characters *before* the
+  fence (`code_auto/scripts/llm.py:703`); blocks without it come back as
+  "unmatched" instead of being saved.
+- **The terminal wizard does not auto-detect a saved draft.**
+  `run_auto.sh` only inspects `draft/` after you answer *yes* to its first
+  question, whereas the web chat now detects and verifies an on-disk
+  `draft/draft.json` on load.
+- **The next-blog loop exists only in the AI Studio prompt.** The prompt offers
+  to start the next blog once you confirm a blog is done, but archiving is
+  still a manual command and `draft/chat_state.json` is only reset by
+  `archive_output.py` or the *reset answers* button.
+- **No automated tests in the repository.** `uv run ruff check` is the only
+  gate; the wizard state machine has no in-repo coverage.
+- **27 pre-existing `ruff` findings** (8 auto-fixable) — none introduced by
+  the setup work, not cleaned up yet.
+- **Documentation drift:** `code_auto/docs/TECH_STACK.md` lists `requests` as
+  used (it is not — only `urllib` and `aiohttp`), and
+  `code_auto/scripts/sys_prompt.md` never mentions `check_assets.py`.
+- **`main.py` is still the `uv init` hello-world stub.**
 
 ## Documentation
 

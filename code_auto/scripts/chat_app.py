@@ -48,14 +48,37 @@ def wizard_view():
     state = pipeline.load_state()
     summary = pipeline.state_summary()
     answers = state['answers']
-    draft_ok = summary['draft']['valid']
+    draft = summary['draft']
+    draft_ok = draft['valid']
     missing = summary['missingCount']
+    errors = draft['errors']
 
-    view = {'answers': answers, 'draft': summary['draft'],
+    view = {'answers': answers, 'draft': draft,
             'totals': summary['totals'], 'missing': summary['missing'],
             'missingCount': missing, 'assembled': summary['assembled'],
             'blog': summary['blog'], 'models': summary['models'],
             'sections': summary['sections'], 'warnings': summary['warnings']}
+
+    # A draft.json dropped into draft/ (downloaded from AI Studio, saved from
+    # an earlier session, ...) is detected and verified before anything is
+    # asked - the wizard does not need to be told it exists.
+    if answers['draft'] is None and draft_ok:
+        found = (f'{draft["sections"]} sections, "{draft["title"]}" - '
+                 f'verified OK'
+                 + (f', {len(view["warnings"])} warning(s)'
+                    if view['warnings'] else ''))
+        view.update(phase='draft_found',
+                    question=f'Found draft/draft.json on disk: {found}. '
+                             'Use it and continue?')
+        return view
+
+    if answers['draft'] is None and draft['exists']:
+        view.update(phase='draft_fix',
+                    question='draft/draft.json is on disk but invalid: '
+                             + ('; '.join(errors) or 'unknown error')
+                             + '. Paste a corrected one in the chat, or give '
+                               'me the blog and I will recreate it.')
+        return view
 
     if answers['draft'] is None:
         view.update(phase='q_draft',
@@ -70,6 +93,11 @@ def wizard_view():
         view.update(phase='blog',
                     question='Paste your blog below (it is saved as '
                              'input/blog.txt), then create the draft.')
+    elif not answers['draft'] and draft_ok:
+        view.update(phase='blog',
+                    question='Paste your blog below (it is saved as '
+                             'input/blog.txt). Note: draft/draft.json already '
+                             'exists - creating a new draft will replace it.')
     elif answers['images'] is None:
         view.update(phase='q_images',
                     question='Have you already created the image assets for '
