@@ -1,0 +1,195 @@
+{
+  "metadata": {
+    "audioUrl": "master-audio.mp3",
+    "totalDuration": 164.306,
+    "leadInMs": 500,
+    "sentencePauseMs": 250,
+    "sectionPauseMs": 600,
+    "generatedAt": "2026-10-02T01:09:21+00:00",
+    "title": "Modular Computing and Global Digital Equity"
+  },
+  "sections": [
+    {
+      "id": "section-1-global-digital-equity",
+      "type": "static",
+      "startMs": 500,
+      "endMs": 30606,
+      "transcript": [
+        {
+          "id": "t1_1",
+          "text": "The traditional computing model of massive, power-hungry desktop towers or frequent expensive laptop replacements is fundamentally incompatible with emerging economies.",
+          "startMs": 500,
+          "endMs": 12040
+        },
+        {
+          "id": "t1_2",
+          "text": "For the majority of the human population, low-cost and low-power modular computing is not merely an alternative, but a global necessity.",
+          "startMs": 12290,
+          "endMs": 21632
+        },
+        {
+          "id": "t1_3",
+          "text": "Reframing hardware design around these constraints elevates consumer electronics into a crucial issue of global digital equity.",
+          "startMs": 21882,
+          "endMs": 30606
+        }
+      ],
+      "audioUrl": "audio/01_section-1-global-digital-equity.wav",
+      "visual": {
+        "type": "image",
+        "url": "image/section-1-global-digital-equity.jpg"
+      }
+    },
+    {
+      "id": "section-2-energy-reality",
+      "type": "dynamic",
+      "startMs": 31206,
+      "endMs": 57306,
+      "transcript": [
+        {
+          "id": "t2_1",
+          "text": "Standard desktop workstations draw between four hundred and eight hundred watts under load.",
+          "startMs": 31206,
+          "endMs": 37226
+        },
+        {
+          "id": "t2_2",
+          "text": "In regions facing rolling blackouts or relying on off-grid solar and battery storage, powering a six-hundred-watt desktop is virtually impossible.",
+          "startMs": 37476,
+          "endMs": 47134
+        },
+        {
+          "id": "t2_3",
+          "text": "A modular system running on a sixty-five to one hundred watt power budget allows continuous operation on basic solar setups even during grid failures.",
+          "startMs": 47384,
+          "endMs": 57306
+        }
+      ],
+      "audioUrl": "audio/02_section-2-energy-reality.wav",
+      "scriptId": "EnergyWattageComparisonAnim",
+      "scriptUrl": "js/EnergyWattageComparisonAnim.js"
+    },
+    {
+      "id": "section-3-thermal-nightmare",
+      "type": "static",
+      "startMs": 57906,
+      "endMs": 81926,
+      "transcript": [
+        {
+          "id": "t3_1",
+          "text": "Computing hardware is conventionally tested in climate-controlled rooms at twenty-one degrees Celsius.",
+          "startMs": 57906,
+          "endMs": 64203
+        },
+        {
+          "id": "t3_2",
+          "text": "Across the tropical belt, ambient indoor temperatures frequently exceed thirty-five degrees without air conditioning.",
+          "startMs": 64453,
+          "endMs": 71676
+        },
+        {
+          "id": "t3_3",
+          "text": "Under these conditions, power-heavy desktops act as room heaters and suffer rapid thermal throttling, whereas efficient low-wattage processors remain sustainable.",
+          "startMs": 71926,
+          "endMs": 81926
+        }
+      ],
+      "audioUrl": "audio/03_section-3-thermal-nightmare.wav",
+      "visual": {
+        "type": "image",
+        "url": "image/section-3-thermal-nightmare.jpg"
+      }
+    },
+    {
+      "id": "section-4-spatial-and-economic-sharing",
+      "type": "dynamic",
+      "startMs": 82526,
+      "endMs": 110466,
+      "transcript": [
+        {
+          "id": "t4_1",
+          "text": "In dense multi-generational homes, dedicating permanent space to desktop towers and monitors is a luxury few can afford.",
+          "startMs": 82526,
+          "endMs": 91307
+        },
+        {
+          "id": "t4_2",
+          "text": "A modular compute booster the size of a paperback book can easily be stored in a drawer when not in use.",
+          "startMs": 91557,
+          "endMs": 99167
+        },
+        {
+          "id": "t4_3",
+          "text": "This architecture allows hardware sharing: multiple family members can plug a single high-performance accelerator into their respective legacy laptops.",
+          "startMs": 99417,
+          "endMs": 110466
+        }
+      ],
+      "audioUrl": "audio/04_section-4-spatial-and-economic-sharing.wav",
+      "scriptId": "ModularHardwareSharingAnim",
+      "scriptUrl": "js/ModularHardwareSharingAnim.js"
+    },
+    {
+      "id": "section-5-fighting-e-waste",
+      "type": "static",
+      "startMs": 111066,
+      "endMs": 135246,
+      "transcript": [
+        {
+          "id": "t5_1",
+          "text": "Planned obsolescence pressures consumers to abandon aging machines that remain perfectly capable of everyday productivity.",
+          "startMs": 111066,
+          "endMs": 119489
+        },
+        {
+          "id": "t5_2",
+          "text": "External compute standards provide the ultimate form of upcycling for older devices.",
+          "startMs": 119739,
+          "endMs": 125538
+        },
+        {
+          "id": "t5_3",
+          "text": "A six-year-old laptop paired with a modern plug-in accelerator can run current software, cutting e-waste and extending hardware lifespan.",
+          "startMs": 125788,
+          "endMs": 135246
+        }
+      ],
+      "audioUrl": "audio/05_section-5-fighting-e-waste.wav",
+      "visual": {
+        "type": "image",
+        "url": "image/section-5-fighting-e-waste.jpg"
+      }
+    },
+    {
+      "id": "section-6-bridging-the-ai-divide",
+      "type": "static",
+      "startMs": 135846,
+      "endMs": 164306,
+      "transcript": [
+        {
+          "id": "t6_1",
+          "text": "The United Nations Sustainable Development Goals target universal industry innovation and equitable education.",
+          "startMs": 135846,
+          "endMs": 143478
+        },
+        {
+          "id": "t6_2",
+          "text": "Without accessible local hardware, developing communities will be forced into costly, cloud-dependent artificial intelligence frameworks.",
+          "startMs": 143728,
+          "endMs": 153233
+        },
+        {
+          "id": "t6_3",
+          "text": "Standardizing open-source, energy-efficient compute accelerators offers a concrete blueprint to democratize technology and bridge the global digital divide.",
+          "startMs": 153483,
+          "endMs": 164306
+        }
+      ],
+      "audioUrl": "audio/06_section-6-bridging-the-ai-divide.wav",
+      "visual": {
+        "type": "image",
+        "url": "image/section-6-bridging-the-ai-divide.jpg"
+      }
+    }
+  ]
+}

@@ -216,3 +216,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+code_auto/out/
+code_auto/draft/
+code_auto/input/
+code_auto/final/

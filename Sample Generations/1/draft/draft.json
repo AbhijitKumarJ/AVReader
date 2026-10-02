@@ -1,0 +1,125 @@
+{
+  "schema": "draft-v1",
+  "metadata": {
+    "schema": "draft-v1",
+    "title": "Modular Computing and Global Digital Equity",
+    "createdAt": "2026-10-02T01:01:44+00:00",
+    "models": {
+      "llm": "gemini-3.8-flash",
+      "image": "gemini-3.1-flash-lite-image",
+      "audio": "gemini-3.8-flash-lite-tts",
+      "voice": "Kore"
+    },
+    "source": "input/blog.txt"
+  },
+  "sections": [
+    {
+      "id": "section-1-global-digital-equity",
+      "type": "static",
+      "transcript": [
+        "The traditional computing model of massive, power-hungry desktop towers or frequent expensive laptop replacements is fundamentally incompatible with emerging economies.",
+        "For the majority of the human population, low-cost and low-power modular computing is not merely an alternative, but a global necessity.",
+        "Reframing hardware design around these constraints elevates consumer electronics into a crucial issue of global digital equity."
+      ],
+      "visual": {
+        "type": "image",
+        "file": "section-1-global-digital-equity.jpg",
+        "prompt": "16:9 editorial photograph of a humble yet modern student workspace in a warm South Asian home. A slim laptop rests on a modest wooden desk near an open window with soft natural sunlight. Cinematic lighting, authentic atmosphere, high detail, no text overlays."
+      },
+      "audio": {
+        "file": "01_section-1-global-digital-equity.wav",
+        "text": "The traditional computing model of massive, power-hungry desktop towers or frequent expensive laptop replacements is fundamentally incompatible with emerging economies. For the majority of the human population, low-cost and low-power modular computing is not merely an alternative, but a global necessity. Reframing hardware design around these constraints elevates consumer electronics into a crucial issue of global digital equity."
+      }
+    },
+    {
+      "id": "section-2-energy-reality",
+      "type": "dynamic",
+      "transcript": [
+        "Standard desktop workstations draw between four hundred and eight hundred watts under load.",
+        "In regions facing rolling blackouts or relying on off-grid solar and battery storage, powering a six-hundred-watt desktop is virtually impossible.",
+        "A modular system running on a sixty-five to one hundred watt power budget allows continuous operation on basic solar setups even during grid failures."
+      ],
+      "script": {
+        "scriptId": "EnergyWattageComparisonAnim",
+        "file": "EnergyWattageComparisonAnim.js",
+        "spec": "Timed 5-second visualization on a dark #0d1117 background. On the left, a heavy 600W gauge spikes into a red overload threshold with flashing grid instability indicators. On the right, an efficient 65W gauge holds steady in emerald green, illuminated by a solar panel icon and battery bank charging cycle."
+      },
+      "audio": {
+        "file": "02_section-2-energy-reality.wav",
+        "text": "Standard desktop workstations draw between four hundred and eight hundred watts under load. In regions facing rolling blackouts or relying on off-grid solar and battery storage, powering a six-hundred-watt desktop is virtually impossible. A modular system running on a sixty-five to one hundred watt power budget allows continuous operation on basic solar setups even during grid failures."
+      }
+    },
+    {
+      "id": "section-3-thermal-nightmare",
+      "type": "static",
+      "transcript": [
+        "Computing hardware is conventionally tested in climate-controlled rooms at twenty-one degrees Celsius.",
+        "Across the tropical belt, ambient indoor temperatures frequently exceed thirty-five degrees without air conditioning.",
+        "Under these conditions, power-heavy desktops act as room heaters and suffer rapid thermal throttling, whereas efficient low-wattage processors remain sustainable."
+      ],
+      "visual": {
+        "type": "image",
+        "file": "section-3-thermal-nightmare.jpg",
+        "prompt": "16:9 photograph capturing an open-air indoor living space in a tropical climate. Soft golden light and a rotating ceiling fan illuminate a compact, modern computing module operating silently on a bamboo desk. Documentary realism, warm ambient tones, no text overlays."
+      },
+      "audio": {
+        "file": "03_section-3-thermal-nightmare.wav",
+        "text": "Computing hardware is conventionally tested in climate-controlled rooms at twenty-one degrees Celsius. Across the tropical belt, ambient indoor temperatures frequently exceed thirty-five degrees without air conditioning. Under these conditions, power-heavy desktops act as room heaters and suffer rapid thermal throttling, whereas efficient low-wattage processors remain sustainable."
+      }
+    },
+    {
+      "id": "section-4-spatial-and-economic-sharing",
+      "type": "dynamic",
+      "transcript": [
+        "In dense multi-generational homes, dedicating permanent space to desktop towers and monitors is a luxury few can afford.",
+        "A modular compute booster the size of a paperback book can easily be stored in a drawer when not in use.",
+        "This architecture allows hardware sharing: multiple family members can plug a single high-performance accelerator into their respective legacy laptops."
+      ],
+      "script": {
+        "scriptId": "ModularHardwareSharingAnim",
+        "file": "ModularHardwareSharingAnim.js",
+        "spec": "Timed 5-second animation on a dark #0d1117 canvas. A central glowing modular compute brick sends dynamic data streams sequentially to three distinct laptop outlines, demonstrating how a single accelerator can be shared across multiple family members on demand."
+      },
+      "audio": {
+        "file": "04_section-4-spatial-and-economic-sharing.wav",
+        "text": "In dense multi-generational homes, dedicating permanent space to desktop towers and monitors is a luxury few can afford. A modular compute booster the size of a paperback book can easily be stored in a drawer when not in use. This architecture allows hardware sharing, where multiple family members plug a single high-performance accelerator into their respective legacy laptops."
+      }
+    },
+    {
+      "id": "section-5-fighting-e-waste",
+      "type": "static",
+      "transcript": [
+        "Planned obsolescence pressures consumers to abandon aging machines that remain perfectly capable of everyday productivity.",
+        "External compute standards provide the ultimate form of upcycling for older devices.",
+        "A six-year-old laptop paired with a modern plug-in accelerator can run current software, cutting e-waste and extending hardware lifespan."
+      ],
+      "visual": {
+        "type": "image",
+        "file": "section-5-fighting-e-waste.jpg",
+        "prompt": "16:9 detailed macro photo of an older, sturdy laptop connected via a high-speed braided cable to a compact external processing brick. Set on a dark wooden workshop bench with repair tools in soft background bokeh. Clean industrial aesthetic, no text overlays."
+      },
+      "audio": {
+        "file": "05_section-5-fighting-e-waste.wav",
+        "text": "Planned obsolescence pressures consumers to abandon aging machines that remain perfectly capable of everyday productivity. External compute standards provide the ultimate form of upcycling for older devices. A six-year-old laptop paired with a modern plug-in accelerator can run current software, cutting e-waste and extending hardware lifespan."
+      }
+    },
+    {
+      "id": "section-6-bridging-the-ai-divide",
+      "type": "static",
+      "transcript": [
+        "The United Nations Sustainable Development Goals target universal industry innovation and equitable education.",
+        "Without accessible local hardware, developing communities will be forced into costly, cloud-dependent artificial intelligence frameworks.",
+        "Standardizing open-source, energy-efficient compute accelerators offers a concrete blueprint to democratize technology and bridge the global digital divide."
+      ],
+      "visual": {
+        "type": "image",
+        "file": "section-6-bridging-the-ai-divide.jpg",
+        "prompt": "16:9 cinematic shot of a collaborative community learning hub in an emerging economy. Students and innovators work with compact screens and energy-efficient devices, illuminated by gentle morning light. Inspiring, dignified, photojournalistic style, no text overlays."
+      },
+      "audio": {
+        "file": "06_section-6-bridging-the-ai-divide.wav",
+        "text": "The United Nations Sustainable Development Goals target universal industry innovation and equitable education. Without accessible local hardware, developing communities will be forced into costly, cloud-dependent artificial intelligence frameworks. Standardizing open-source, energy-efficient compute accelerators offers a concrete blueprint to democratize technology and bridge the global digital divide."
+      }
+    }
+  ]
+}
