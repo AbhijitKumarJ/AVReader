@@ -1,0 +1,13 @@
+{
+  "step": "start",
+  "answers": {
+    "draft": true,
+    "images": true,
+    "audio": true,
+    "js": true
+  },
+  "blog_pasted": true,
+  "assembled": false,
+  "archived": false,
+  "generated": {}
+}

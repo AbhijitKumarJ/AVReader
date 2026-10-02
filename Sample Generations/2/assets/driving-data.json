@@ -1,0 +1,157 @@
+{
+  "metadata": {
+    "audioUrl": "master-audio.mp3",
+    "totalDuration": 97.64,
+    "leadInMs": 500,
+    "sentencePauseMs": 250,
+    "sectionPauseMs": 600,
+    "generatedAt": "2026-10-02T01:38:16+00:00",
+    "title": "The Modular Solution to Global E-Waste and Compute Demand"
+  },
+  "sections": [
+    {
+      "id": "section-1-macro-crisis",
+      "type": "static",
+      "startMs": 500,
+      "endMs": 16830,
+      "transcript": [
+        {
+          "id": "t1_1",
+          "text": "As global demand for personal computing surges tenfold across developing regions, the traditional tech model faces an ecological breaking point.",
+          "startMs": 500,
+          "endMs": 10270
+        },
+        {
+          "id": "t1_2",
+          "text": "Discarded corporate hardware and runaway energy demands require a fundamental paradigm shift.",
+          "startMs": 10520,
+          "endMs": 16830
+        }
+      ],
+      "audioUrl": "audio/01_section-1-macro-crisis.wav",
+      "visual": {
+        "type": "image",
+        "url": "image/section-1-macro-crisis.jpg"
+      }
+    },
+    {
+      "id": "section-2-modular-upcycle",
+      "type": "dynamic",
+      "startMs": 17430,
+      "endMs": 33360,
+      "transcript": [
+        {
+          "id": "t2_1",
+          "text": "Developing nations discard tens of millions of functional enterprise laptops every few years.",
+          "startMs": 17430,
+          "endMs": 23716
+        },
+        {
+          "id": "t2_2",
+          "text": "By plugging in low-power, standardized compute modules, these recycled machines can instantly run modern artificial intelligence workloads.",
+          "startMs": 23966,
+          "endMs": 33360
+        }
+      ],
+      "audioUrl": "audio/02_section-2-modular-upcycle.wav",
+      "scriptId": "ModularUpcycleAnim",
+      "scriptUrl": "js/ModularUpcycleAnim.js"
+    },
+    {
+      "id": "section-3-grid-and-power",
+      "type": "dynamic",
+      "startMs": 33960,
+      "endMs": 48770,
+      "transcript": [
+        {
+          "id": "t3_1",
+          "text": "The next billion users cannot adopt high-wattage desktop systems without causing regional power grids to collapse.",
+          "startMs": 33960,
+          "endMs": 41609
+        },
+        {
+          "id": "t3_2",
+          "text": "A low-power fifteen to sixty-five watt compute paradigm is the only mathematically viable path forward.",
+          "startMs": 41859,
+          "endMs": 48770
+        }
+      ],
+      "audioUrl": "audio/03_section-3-grid-and-power.wav",
+      "scriptId": "GridDemandComparison",
+      "scriptUrl": "js/GridDemandComparison.js"
+    },
+    {
+      "id": "section-4-water-and-heat",
+      "type": "static",
+      "startMs": 49370,
+      "endMs": 64820,
+      "transcript": [
+        {
+          "id": "t4_1",
+          "text": "Beyond electrical strain, massive cloud data centers consume millions of gallons of fresh water daily for cooling towers.",
+          "startMs": 49370,
+          "endMs": 57098
+        },
+        {
+          "id": "t4_2",
+          "text": "In water-stressed regions, local compute drastically reduces the reliance on resource-heavy centralized server farms.",
+          "startMs": 57348,
+          "endMs": 64820
+        }
+      ],
+      "audioUrl": "audio/04_section-4-water-and-heat.wav",
+      "visual": {
+        "type": "image",
+        "url": "image/section-4-water-and-heat.jpg"
+      }
+    },
+    {
+      "id": "section-5-data-sovereignty",
+      "type": "dynamic",
+      "startMs": 65420,
+      "endMs": 81830,
+      "transcript": [
+        {
+          "id": "t5_1",
+          "text": "Relying solely on overseas cloud giants forces developing economies into a state of digital colonialism.",
+          "startMs": 65420,
+          "endMs": 72511
+        },
+        {
+          "id": "t5_2",
+          "text": "Modular local accelerators empower institutions to process sensitive medical and civic records on-premises with complete sovereignty.",
+          "startMs": 72761,
+          "endMs": 81830
+        }
+      ],
+      "audioUrl": "audio/05_section-5-data-sovereignty.wav",
+      "scriptId": "DataSovereigntyFlow",
+      "scriptUrl": "js/DataSovereigntyFlow.js"
+    },
+    {
+      "id": "section-6-global-blueprint",
+      "type": "static",
+      "startMs": 82430,
+      "endMs": 97640,
+      "transcript": [
+        {
+          "id": "t6_1",
+          "text": "The sustainable computing blueprint unites repurposed hardware, modular compute boosters, public subsidies, and local-first architecture.",
+          "startMs": 82430,
+          "endMs": 91746
+        },
+        {
+          "id": "t6_2",
+          "text": "This framework provides technological equity while protecting our global resources.",
+          "startMs": 91996,
+          "endMs": 97640
+        }
+      ],
+      "audioUrl": "audio/06_section-6-global-blueprint.wav",
+      "visual": {
+        "type": "image",
+        "url": "image/section-6-global-blueprint.jpg"
+      }
+    }
+  ]
+}
